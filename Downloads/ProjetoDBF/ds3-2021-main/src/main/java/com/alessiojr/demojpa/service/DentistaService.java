@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class DentistaService {
-     private final Logger log = LoggerFactory.getLogger(DentistaService.class);
+    private final Logger log = LoggerFactory.getLogger(DentistaService.class);
 
     private final DentistaRepository dentistaRepository;
 
