@@ -36,7 +36,7 @@ public class ClinicaResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Clinica> getClinica(@PathVariable Long id) {
+    public ResponseEntity<Clinica> mostrarClinicaPorId(@PathVariable Long id) {
         log.debug("REST request to get Clinica : {}", id);
         Optional<Clinica> clinica = clinicaService.findOne(id);
         if(clinica.isPresent()) {
@@ -48,7 +48,7 @@ public class ClinicaResource {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Clinica>> getClinicas(){
+    public ResponseEntity<List<Clinica>> listarClinicas(){
         List<Clinica> lista = clinicaService.findAllList();
         if(lista.size() > 0) {
             return ResponseEntity.ok().body(lista);
@@ -58,7 +58,7 @@ public class ClinicaResource {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Clinica> updateClinica(@RequestBody Clinica clinica) throws URISyntaxException {
+    public ResponseEntity<Clinica> AtualizarClinica(@RequestBody Clinica clinica) throws URISyntaxException {
         log.debug("REST request to update Clinica : {}", clinica);
         if (clinica.getId() == null) {
             throw new ResponseStatusException(
@@ -70,7 +70,7 @@ public class ClinicaResource {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Clinica> createClinica(@RequestBody Clinica clinica) throws URISyntaxException {
+    public ResponseEntity<Clinica> AdicionarClinica(@RequestBody Clinica clinica) throws URISyntaxException {
         log.debug("REST request to save Clinica : {}", clinica);
         if (clinica.getId() != null) {
             throw new ResponseStatusException(
@@ -82,7 +82,7 @@ public class ClinicaResource {
     }
 
     @PostMapping(value = "/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public List<Clinica> upload(@RequestPart("data") MultipartFile csv) throws IOException {
+    public List<Clinica> baixarListaDeClinicas(@RequestPart("data") MultipartFile csv) throws IOException {
         List<Clinica> savedNotes = new ArrayList<>();
         List<Clinica> notes = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(csv).getInputStream(), StandardCharsets.UTF_8)).lines()
@@ -92,7 +92,7 @@ public class ClinicaResource {
     }
 
    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClinica(@PathVariable Long id) {
+    public ResponseEntity<Void> ExcluirClinica(@PathVariable Long id) {
         log.debug("REST request to delete Clinica : {}", id);
 
         clinicaService.delete(id);

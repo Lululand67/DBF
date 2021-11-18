@@ -36,7 +36,7 @@ public class DentistaResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Dentista> getDentista(@PathVariable Long id) {
+    public ResponseEntity<Dentista> mostrarDentistaPorId(@PathVariable Long id) {
         log.debug("REST request to get Dentista : {}", id);
         Optional<Dentista> dentista = dentistaService.findOne(id);
         if(dentista.isPresent()) {
@@ -48,7 +48,7 @@ public class DentistaResource {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Dentista>> getDentistas(){
+    public ResponseEntity<List<Dentista>> listarDentistas(){
         List<Dentista> lista = dentistaService.findAllList();
         if(lista.size() > 0) {
             return ResponseEntity.ok().body(lista);
@@ -58,7 +58,7 @@ public class DentistaResource {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Dentista> updateDentista(@RequestBody Dentista dentista) throws URISyntaxException {
+    public ResponseEntity<Dentista> atualizarDentista(@RequestBody Dentista dentista) throws URISyntaxException {
         log.debug("REST request to update Dentista : {}", dentista);
         if (dentista.getId() == null) {
             throw new ResponseStatusException(
@@ -70,7 +70,7 @@ public class DentistaResource {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Dentista> createDentista(@RequestBody Dentista dentista) throws URISyntaxException {
+    public ResponseEntity<Dentista> adicionarDentista(@RequestBody Dentista dentista) throws URISyntaxException {
         log.debug("REST request to save Dentista : {}", dentista);
         if (dentista.getId() != null) {
             throw new ResponseStatusException(
@@ -82,7 +82,7 @@ public class DentistaResource {
     }
 
     @PostMapping(value = "/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public List<Dentista> upload(@RequestPart("data") MultipartFile csv) throws IOException {
+    public List<Dentista> baixarListaDeDentistas(@RequestPart("data") MultipartFile csv) throws IOException {
         List<Dentista> savedNotes = new ArrayList<>();
         List<Dentista> notes = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(csv).getInputStream(), StandardCharsets.UTF_8)).lines()
@@ -92,7 +92,7 @@ public class DentistaResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDentista(@PathVariable Long id) {
+    public ResponseEntity<Void> excluirDentista(@PathVariable Long id) {
         log.debug("REST request to delete dentista : {}", id);
 
         dentistaService.delete(id);
