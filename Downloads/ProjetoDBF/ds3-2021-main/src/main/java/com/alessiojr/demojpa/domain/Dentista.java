@@ -1,5 +1,6 @@
 package com.alessiojr.demojpa.domain;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -18,11 +19,15 @@ public class Dentista {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(name = "nome", length = 64)
     private String nome;
 
     private Instant dataNascimento;
+    
+    @Column(unique = true)
     private String cpf;
+    
     private String email;
     private String telefone;
     
