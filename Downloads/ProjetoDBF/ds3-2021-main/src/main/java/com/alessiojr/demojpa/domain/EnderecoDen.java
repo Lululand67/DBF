@@ -10,7 +10,8 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "table_enderecoD")
+@Entity
+@Table(name = "table_enderecoD")
 
 public class EnderecoDen {
     @Id

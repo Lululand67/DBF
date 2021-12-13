@@ -6,11 +6,13 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "table_clinica")
+@Entity
+@Table(name = "table_clinica")
 
 public class Clinica {
     

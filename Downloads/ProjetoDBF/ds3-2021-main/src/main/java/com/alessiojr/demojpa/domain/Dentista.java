@@ -10,7 +10,8 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "table_dentista")
+@Entity
+@Table(name = "table_dentista")
 
 public class Dentista {
     @Id
@@ -28,7 +29,9 @@ public class Dentista {
     @OneToOne
     private EnderecoDen endereco;
     
-    //private Clinica clinica;
+    @ManyToOne
+    private Clinica clinica;
+    
     private Boolean isActive;
 
     public static Dentista parseNote(String line) {
