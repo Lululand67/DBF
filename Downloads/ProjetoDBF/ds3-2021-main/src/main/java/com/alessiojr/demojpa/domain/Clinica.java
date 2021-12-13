@@ -23,10 +23,10 @@ public class Clinica {
 
     private String cnpj;
     private String telefone;
-    private String rua;
-    private String bairro;
-    private String cidade;
-    private String uf;
+    
+    @OneToOne
+    private EnderecoCli endereco;
+    
     private Boolean isActive;
 
     public static Clinica parseNote(String line) {
