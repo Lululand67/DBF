@@ -24,11 +24,11 @@ public class Dentista {
     private String cpf;
     private String email;
     private String telefone;
-    private String rua;
-    private String bairro;
-    private String cidade;
-    private String uf;
-    private String clinica;
+    
+    @OneToOne
+    private EnderecoDen endereco;
+    
+    private Clinica clinica;
     private Boolean isActive;
 
     public static Dentista parseNote(String line) {
