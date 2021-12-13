@@ -28,7 +28,7 @@ public class Dentista {
     @OneToOne
     private EnderecoDen endereco;
     
-    private Clinica clinica;
+    //private Clinica clinica;
     private Boolean isActive;
 
     public static Dentista parseNote(String line) {
