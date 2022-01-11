@@ -31,8 +31,6 @@ public class Dentista {
     private String email;
     private String telefone;
     
-    @OneToOne
-    private EnderecoDen endereco;
     
     @ManyToOne
     private Clinica clinica;
