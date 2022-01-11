@@ -32,6 +32,9 @@ public class Pedido {
     @ManyToOne
     private Dentista dentista;
     
+    @ManyToOne
+    private Aparelho aparelho;
+    
     private String descricao;
     
     @Temporal(TemporalType.DATE)
@@ -40,7 +43,7 @@ public class Pedido {
     @Temporal(TemporalType.DATE)
     private Date dataEntrega;
     
-    private Float valor;
+    private Float preco;
     
     private Boolean isActive;
 
