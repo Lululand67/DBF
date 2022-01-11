@@ -27,7 +27,7 @@ public class Clinica {
     
     @Column(unique = true)
     private String cnpj;
-    private String telefone;
+
     @OneToOne
     private EnderecoCli endereco;
     

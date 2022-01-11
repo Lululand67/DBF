@@ -17,7 +17,8 @@ public class EnderecoCli {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    private String cep;
     private String rua;
     private String bairro;
     private String cidade;
