@@ -25,7 +25,7 @@ public class DentistaService {
     }
 
     public Optional<Dentista> findOne(Long id) {
-        log.debug("Request to get Pessoa : {}", id);
+        log.debug("Request to get Dentista : {}", id);
         return dentistaRepository.findById(id);
     }
 
