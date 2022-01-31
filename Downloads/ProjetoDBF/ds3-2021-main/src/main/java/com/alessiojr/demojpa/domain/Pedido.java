@@ -36,14 +36,14 @@ public class Pedido {
     private Aparelho aparelho;
     
     private String descricao;
-    
+    private Float preco;
     @Temporal(TemporalType.DATE)
     private Date dataEmissao;
     
     @Temporal(TemporalType.DATE)
     private Date dataEntrega;
     
-    private Float preco;
+    
     
     private Boolean isActive;
 
