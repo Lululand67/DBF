@@ -32,7 +32,7 @@ public class Clinica {
     private String rua;
     private String bairro;
     private String cidade;
-    private String uf;
+    private String estado;
     
     private Boolean isActive;
 
