@@ -41,7 +41,7 @@ public class Pedido {
     private Date dataEmissao;
     
     @Temporal(TemporalType.DATE)
-    private Date dataEntrega;
+    private Date dataMaxima;
     
     
     
