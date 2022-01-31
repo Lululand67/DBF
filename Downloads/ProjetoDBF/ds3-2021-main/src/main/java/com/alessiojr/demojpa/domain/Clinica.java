@@ -28,8 +28,11 @@ public class Clinica {
     @Column(unique = true)
     private String cnpj;
 
-    @OneToOne
-    private EnderecoCli endereco;
+    private String cep;
+    private String rua;
+    private String bairro;
+    private String cidade;
+    private String uf;
     
     private Boolean isActive;
 
