@@ -24,7 +24,7 @@ public class Aparelho {
     private String nome;
 
     private String descricao;
-    private String valor;
+    private String preco;
     
     @ManyToOne
     private Dentista dentista;
