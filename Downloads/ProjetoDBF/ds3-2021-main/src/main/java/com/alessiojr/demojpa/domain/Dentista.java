@@ -29,7 +29,7 @@ public class Dentista {
     private String cpf;
     
     private String email;
-    private String telefone;
+    private String celular;
     
     
     @ManyToOne
