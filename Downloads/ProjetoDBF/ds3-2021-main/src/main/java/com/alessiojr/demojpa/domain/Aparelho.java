@@ -26,8 +26,7 @@ public class Aparelho {
     private String descricao;
     private String preco;
     
-    @ManyToOne
-    private Dentista dentista;
+   
         
     private Boolean isActive;
 
