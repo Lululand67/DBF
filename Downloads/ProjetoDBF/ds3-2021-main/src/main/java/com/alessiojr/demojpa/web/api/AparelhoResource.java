@@ -2,6 +2,7 @@ package com.alessiojr.demojpa.web.api;
 
 import com.alessiojr.demojpa.domain.Aparelho;
 import com.alessiojr.demojpa.service.AparelhoService;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,17 +23,20 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/aparelhos")
+@Api(value = "aparelho", tags = "ProLab Duarte")
+@CrossOrigin(origins = "*")
 public class AparelhoResource {
     
     private final Logger log = LoggerFactory.getLogger(AparelhoResource.class);
 
-    private final AparelhoService aparelhoService;
-
-    public AparelhoResource(AparelhoService clinicaService) {
-        this.aparelhoService = clinicaService;
+    @Autowired
+    private AparelhoService aparelhoService;
+    
+    public AparelhoResource() {
     }
 
     @GetMapping("/{id}")
@@ -97,5 +101,16 @@ public class AparelhoResource {
 
         aparelhoService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    
+    @GetMapping("/{nome}/exists")
+    public ResponseEntity<Boolean> isExisting(@PathVariable String nome){
+        log.info("REST request to get Categoria By Descrição : {}", nome);
+
+        if(aparelhoService.findByNome(nome).isPresent()) {
+            return ResponseEntity.ok().body(Boolean.TRUE);
+        }else{
+        	return ResponseEntity.ok().body(Boolean.FALSE);
+        }
     }
 }

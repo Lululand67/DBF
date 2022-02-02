@@ -32,8 +32,8 @@ public class Dentista {
     private String email;
     private String celular;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Clinica> clinica;
+    @ManyToOne
+    private Clinica clinica;
 
     
     private Boolean isActive;

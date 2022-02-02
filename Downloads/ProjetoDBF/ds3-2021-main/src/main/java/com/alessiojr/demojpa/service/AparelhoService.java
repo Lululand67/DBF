@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class AparelhoService {
     private final Logger log = LoggerFactory.getLogger(AparelhoService.class);
 
-    private final AparelhoRepository aparelhoRepository;
+    @Autowired
+    private AparelhoRepository aparelhoRepository;
 
-    public AparelhoService(AparelhoRepository clinicaRepository) {
-        this.aparelhoRepository = clinicaRepository;
-    }
+
 
     public List<Aparelho> findAllList(){
         log.debug("Request to get All Aparelho");
@@ -45,4 +45,5 @@ public class AparelhoService {
         aparelhos = aparelhoRepository.saveAll(aparelhos);
         return aparelhos;
     }
+
 }

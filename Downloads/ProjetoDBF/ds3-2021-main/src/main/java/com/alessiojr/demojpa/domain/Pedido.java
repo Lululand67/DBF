@@ -30,11 +30,11 @@ public class Pedido {
     @Column(name = "nomeD", length = 64)
     private String nomeDentista;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Dentista> dentista;
+    @ManyToOne
+    private Dentista dentista;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Aparelho> aparelho;
+    @ManyToOne
+    private Aparelho aparelho;
     
     
     private String descricao;

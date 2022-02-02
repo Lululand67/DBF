@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClinicaRepository extends JpaRepository<Clinica, Long> {
     
-    Optional<Clinica> findByName(String nome);
 }
