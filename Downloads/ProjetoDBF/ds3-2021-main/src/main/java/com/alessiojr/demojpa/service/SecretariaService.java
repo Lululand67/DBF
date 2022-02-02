@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class SecretariaService {
     private final Logger log = LoggerFactory.getLogger(SecretariaService.class);
 
-    private final SecretariaRepository secretariaRepository;
+    @Autowired
+    private SecretariaRepository secretariaRepository;
 
-    public SecretariaService(SecretariaRepository secretariaRepository) {
-        this.secretariaRepository = secretariaRepository;
-    }
 
     public List<Secretaria> findAllList(){
         log.debug("Request to get All Secretaria");

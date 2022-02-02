@@ -47,8 +47,8 @@ public class ClinicaService {
     }
     
     public Optional<Clinica> findByCnpj(String cnpj) {
-		log.info("Buscando um Usuário para o cnpj {}", cnpj);
-		return clinicaRepository.findByCnpj(cnpj);
-	}
+        log.info("Buscando um Usuário para o cnpj {}", cnpj);
+        return clinicaRepository.findByCnpj(cnpj);
+    }
 	
 }

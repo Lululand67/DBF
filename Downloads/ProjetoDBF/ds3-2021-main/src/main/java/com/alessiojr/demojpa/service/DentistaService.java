@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class DentistaService {
     private final Logger log = LoggerFactory.getLogger(DentistaService.class);
 
-    private final DentistaRepository dentistaRepository;
+    @Autowired
+    private DentistaRepository dentistaRepository;
 
-    public DentistaService(DentistaRepository dentistaRepository) {
-        this.dentistaRepository = dentistaRepository;
-    }
 
     public List<Dentista> findAllList(){
         log.debug("Request to get All Dentista");
@@ -44,5 +43,10 @@ public class DentistaService {
         log.debug("Request to save Dentista : {}", dentistas);
         dentistas = dentistaRepository.saveAll(dentistas);
         return dentistas;
+    }
+    
+    public Optional<Dentista> findByCpf(String cpf) {
+        log.info("Buscando um Usuário para o cpf {}", cpf);
+        return dentistaRepository.findByCpf(cpf);
     }
 }
