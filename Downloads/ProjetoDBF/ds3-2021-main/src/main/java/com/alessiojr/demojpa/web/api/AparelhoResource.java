@@ -103,14 +103,5 @@ public class AparelhoResource {
         return ResponseEntity.noContent().build();
     }
     
-    @GetMapping("/{nome}/exists")
-    public ResponseEntity<Boolean> isExisting(@PathVariable String nome){
-        log.info("REST request to get Categoria By Descrição : {}", nome);
-
-        if(aparelhoService.findByNome(nome).isPresent()) {
-            return ResponseEntity.ok().body(Boolean.TRUE);
-        }else{
-        	return ResponseEntity.ok().body(Boolean.FALSE);
-        }
-    }
+  
 }
