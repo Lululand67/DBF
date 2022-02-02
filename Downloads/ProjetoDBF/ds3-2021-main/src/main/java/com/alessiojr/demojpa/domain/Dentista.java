@@ -26,7 +26,7 @@ public class Dentista {
 
     private Instant dataNascimento;
     
-    @Column(unique = true)
+    @Column(name = "cpf", nullable = false)
     private String cpf;
     
     private String email;

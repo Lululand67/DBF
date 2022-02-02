@@ -25,7 +25,7 @@ public class Clinica {
     @Column(name = "nome", length = 64)
     private String nome;
     
-    @Column(unique = true)
+    @Column(name = "cnpj", nullable = false)
     private String cnpj;
 
     private String cep;
