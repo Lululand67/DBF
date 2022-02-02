@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,9 +32,9 @@ public class Dentista {
     private String email;
     private String celular;
     
-    
-    @ManyToOne
-    private Clinica clinica;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Clinica> clinica;
+
     
     private Boolean isActive;
 

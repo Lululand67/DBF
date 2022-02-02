@@ -9,6 +9,7 @@ import java.time.Instant;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,11 +30,12 @@ public class Pedido {
     @Column(name = "nomeD", length = 64)
     private String nomeDentista;
     
-    @ManyToOne
-    private Dentista dentista;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Dentista> dentista;
     
-    @ManyToOne
-    private Aparelho aparelho;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Aparelho> aparelho;
+    
     
     private String descricao;
     private Float preco;
