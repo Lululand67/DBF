@@ -51,5 +51,8 @@ public class SecretariaService {
 		return secretariaRepository.findByEmail(email);
 	}
 	
-    
+    public Optional<Secretaria> findUsuarioByEmailAndSenha(String email, String senha) {
+        log.debug("Buscando um usuário por Email and Senha : {}", email, senha);
+        return secretariaRepository.findUsuarioByEmailAndSenha(email, senha);
+    }
 }
