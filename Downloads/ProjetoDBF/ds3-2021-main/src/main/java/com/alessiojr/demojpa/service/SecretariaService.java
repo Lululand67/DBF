@@ -45,4 +45,11 @@ public class SecretariaService {
         secretarias = secretariaRepository.saveAll(secretarias);
         return secretarias;
     }
+    
+    public Optional<Secretaria> findByEmail(String email) {
+		log.info("Buscando um Usuário para o email {}", email);
+		return secretariaRepository.findByEmail(email);
+	}
+	
+    
 }

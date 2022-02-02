@@ -98,4 +98,13 @@ public class SecretariaResource {
         secretariaService.delete(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/{email}/exists")
+    public ResponseEntity<Boolean> isExisting(@PathVariable String email){
+        log.info("REST request to get usuario By email : {}", email);
+        if(secretariaService.findByEmail(email).isPresent()) {
+            return ResponseEntity.ok().body(Boolean.TRUE);
+        }else{
+        	return ResponseEntity.ok().body(Boolean.FALSE);
+        }
+    }
 }
