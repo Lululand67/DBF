@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/clinicas")
@@ -29,10 +30,12 @@ public class ClinicaResource {
     
     private final Logger log = LoggerFactory.getLogger(ClinicaResource.class);
 
-    private final ClinicaService clinicaService;
+    @Autowired
+    private ClinicaService clinicaService;
 
-    public ClinicaResource(ClinicaService clinicaService) {
-        this.clinicaService = clinicaService;
+
+    public ClinicaResource() {
+
     }
 
     @GetMapping("/{id}")
@@ -97,5 +100,16 @@ public class ClinicaResource {
 
         clinicaService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    
+    @GetMapping("/{cnpj}/exists")
+    public ResponseEntity<Boolean> isExisting(@PathVariable String cnpj){
+        log.info("REST request to get Contato By Cpf : {}", cnpj);
+
+        if(clinicaService.findByCnpj(cnpj).isPresent()) {
+            return ResponseEntity.ok().body(Boolean.TRUE);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
     }
 }

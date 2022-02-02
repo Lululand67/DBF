@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ClinicaService {
     private final Logger log = LoggerFactory.getLogger(ClinicaService.class);
 
-    private final ClinicaRepository clinicaRepository;
+    @Autowired
+    private ClinicaRepository clinicaRepository;
 
-    public ClinicaService(ClinicaRepository clinicaRepository) {
-        this.clinicaRepository = clinicaRepository;
-    }
+
 
     public List<Clinica> findAllList(){
         log.debug("Request to get All Clinica");
@@ -45,4 +45,10 @@ public class ClinicaService {
         clinicas = clinicaRepository.saveAll(clinicas);
         return clinicas;
     }
+    
+    public Optional<Clinica> findByCnpj(String cnpj) {
+		log.info("Buscando um Usuário para o cnpj {}", cnpj);
+		return clinicaRepository.findByCnpj(cnpj);
+	}
+	
 }
