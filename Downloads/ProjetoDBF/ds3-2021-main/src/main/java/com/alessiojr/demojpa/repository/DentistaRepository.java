@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DentistaRepository extends JpaRepository<Dentista, Long> {
 
-    Optional<Clinica> findByName(String nome);
+    Optional<Dentista> findByName(String nome);
 }
