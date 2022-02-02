@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/pedidos")
@@ -29,10 +30,10 @@ public class PedidoResource {
     
     private final Logger log = LoggerFactory.getLogger(DentistaResource.class);
 
-    private final PedidoService pedidoService;
+    @Autowired
+    private PedidoService pedidoService;
 
-    public PedidoResource(PedidoService pedidoService) {
-        this.pedidoService = pedidoService;
+    public PedidoResource() {
     }
 
     @GetMapping("/{id}")
