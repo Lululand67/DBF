@@ -35,7 +35,7 @@ public class Dentista {
     @ManyToOne
     private Clinica clinica;
     
-    
+
     private Boolean isActive;
 
     public static Dentista parseNote(String line) {

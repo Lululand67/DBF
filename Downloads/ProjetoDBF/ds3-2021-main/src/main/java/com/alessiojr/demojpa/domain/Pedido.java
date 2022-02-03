@@ -26,19 +26,17 @@ public class Pedido {
     @Column(name = "nomeP", length = 64)
     private String nomePaciente;
     
-    @NotNull
-    @Column(name = "nomeD", length = 64)
-    private String nomeDentista;
+   
     
     @ManyToOne
-    private Dentista dentista;
+    private Dentista nomeDentista;
     
     @ManyToOne
-    private Aparelho aparelho;
+    private Aparelho descricao;
     
     
-    private String descricao;
-    private Float preco;
+
+    private String preco;
     @Temporal(TemporalType.DATE)
     private Date dataEmissao;
     
